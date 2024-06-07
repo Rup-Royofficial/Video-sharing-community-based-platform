@@ -1,0 +1,16 @@
+{
+  "name": "video_sharing_and_subscription_platform",
+  "version": "1.0.0",
+  "description": "***Video content viewing&sharing platform***",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/index.js"
+  },
+  "keywords": [
+    "javascript",
+    "backend"
+  ],
+  "author": "Rupayan Roy",
+  "license": "ISC"
+}
