@@ -11,6 +11,41 @@ cloudinary.config({
 });
 
 
+// file stays temporarily in the server then is moved to cloudinary, to tackle issues regarding faults while uploading from the client side
+const uploadOnCloudinary = async (localeFilePath) => {
+    try {
+        // if there is not file path at all, then return null
+        if(!localeFilePath) return null
+
+        // upload file on cloudinary 
+        // It attempts to upload the file to Cloudinary using cloudinary.uploader.upload.
+        // The resource_type: "auto" option is used, which allows Cloudinary to automatically determine the file type (image, video, etc.).
+        const response = await cloudinary.uploader.upload(localeFilePath, { // provide upload options here
+            resource_type: "auto", 
+        })
+
+
+
+        // upon successful file upload
+        // it logs the URL of the uploaded file and returns the response from Cloudinary.
+        console.log("File has been successfully uploaded to cloudinary", response.url);
+        return response
+
+
+
+    } catch (error) {
+        // error will occur when the file while is present in the server now, is not properly uploaded to cloudinary
+        // ideally that file from the server should be removed for a safe cleaning purpose as it might be corrupted etc ...
+
+        fs.unlinkSync(localeFilePath) //removes the locally saved temporary file as the upload operation failed
+        return null
+    }
+}
+
+export { uploadOnCloudinary }
+
+
+
 // (async function() {
 
     
