@@ -29,7 +29,16 @@ const app = express()
 #
 
 
+
+
+
+
 # Remember
 ```c
 // -r dotenv/config --experimental-json-modules is primarily used cause modular approach in dotenv is still experimental
 ```
+
+
+
+
+# ***Routing Functionality***

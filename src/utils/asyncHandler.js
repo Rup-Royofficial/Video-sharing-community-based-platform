@@ -5,9 +5,12 @@
 */
 
 
-const asyncHandler = (requestHandler) => { 
-    return (req,res,next) => {
+const asyncHandler = (requestHandler) => {  // It takes a requestHandler function (an asynchronous function) as an argument.
+    return (req,res,next) => {  // Returns a new function that takes req, res, and next as arguments.
+        // Inside the returned function, requestHandler is called and wrapped with Promise.resolve.
+
         Promise.resolve(requestHandler(req,res,next)).catch((err) => next(err))
+        // If requestHandler throws an error or rejects, the .catch block catches the error and passes it to next(err) to be handled by Express's error handling middleware.
     }
 }
 
