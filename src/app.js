@@ -46,6 +46,19 @@ app.use(express.static("public"))
 app.use(cookieParser())
 
 
+// routes import
+import userRouter from './routes/user.routes.js'
+
+// routes declarations
+userRouter.use('/api/vi/users', userRouter)
+
+
+
+
+
+
+
+
 export { app }
 /*
  `export default app` : Exports app as the default export. You can import it with any name you choose.
