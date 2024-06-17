@@ -29,6 +29,7 @@ const uploadOnCloudinary = async (localeFilePath) => {
         // upon successful file upload
         // it logs the URL of the uploaded file and returns the response from Cloudinary.
         console.log("File has been successfully uploaded to cloudinary", response.url);
+        fs.unlinkSync(localeFilePath);
         return response
 
 
